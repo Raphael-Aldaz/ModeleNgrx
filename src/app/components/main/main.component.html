@@ -1,0 +1,27 @@
+<button (click)="getHotel(0)">name</button>
+<ul id="card" *ngFor="let hotel of hotelList$ | async">
+  <li>{{ hotel.name }}</li>
+  <li>
+    <img [src]="pictureUrl + '/photo/' + hotel.id" />
+  </li>
+  <li>{{ hotel.description }}</li>
+</ul>
+<mat-paginator [length]="totalHotels" [pageSize]="6" (page)="onChange($event)">
+</mat-paginator>
+<div id="login">
+  <form (submit)="onSubmit()" method="post">
+    <label>Login</label>
+    <input
+      type="text"
+      [(ngModel)]="login"
+      [ngModelOptions]="{ standalone: true }"
+    />
+    <label>password</label>
+    <input
+      type="password"
+      [(ngModel)]="password"
+      [ngModelOptions]="{ standalone: true }"
+    />
+    <button type="submit">envoyer</button>
+  </form>
+</div>
